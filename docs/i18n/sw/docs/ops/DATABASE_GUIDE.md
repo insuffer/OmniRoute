@@ -207,7 +207,7 @@ Sheria za umbizo la muhuri wa muda (zinazotekelezwa na `npm run check:migration-
 
 **Omba agizo.** Kiendeshaji hupanga kulingana na thamani ya nambari ya kiambishi awali, si kwa maandishi: faili za zamani za `001`-`241` kwanza, kisha faili zilizowekwa muhuri wa muda kwa mpangilio wa muhuri wa muda, kisha saraka zozote zilizowekwa nafasi kwa majina zilizosajiliwa na `OMNIROUTE_EXTRA_MIGRATIONS_DIRS` (matoleo kama vile `ee-001`). Uhamisho unaosubiri ni faili yoyote ambayo toleo lake haliko `_omniroute_migrations`, kwa hivyo uhamishaji kutoka tawi la zamani ambalo huunganishwa baada ya jipya zaidi bado linatumika kwenye hifadhidata zilizopo.
 
-**Muhuri wa wakati ni agizo la uundaji, sio agizo la kuunganisha.** Ikiwa uhamaji wako unategemea jedwali au safu wima iliyoundwa na uhamiaji na a** mpya zaidi** timestamp (kwa mfano, moja kutoka PR nyingine iliyounganishwa kwanza), hifadhidata mpya ingeendesha yako kwanza na ikashindikana. Wakati PR yako bado imefunguliwa, tengeneza upya jina la faili na `npm run db:new-migration` ili ipate muhuri mpya wa muda, au uifanye kuwa huru. `npm run test:migrations:fresh` inatumika kila uhamiaji kwenye hifadhidata tupu na inashika hii.
+**Muhuri wa muda ni agizo la uundaji, sio agizo la kuunganisha.** Ikiwa uhamaji wako unategemea jedwali au safu wima iliyoundwa na uhamiaji na a** mpya zaidi** timestamp (kwa mfano, moja kutoka PR nyingine iliyounganishwa kwanza), hifadhidata mpya ingeendesha yako kwanza na ikashindikana. Wakati PR yako bado imefunguliwa, tengeneza upya jina la faili na `npm run db:new-migration` ili ipate muhuri mpya wa muda, au uifanye kuwa huru. `npm run test:migrations:fresh` inatumika kila uhamiaji kwenye hifadhidata tupu na inashika hii.
 
 ### Uhamiaji Uliounganishwa Haujafutwa Kamwe au Kubadilishwa Jina
 
@@ -217,7 +217,7 @@ Mara faili ya uhamishaji inapokuwa kwenye tawi la toleo au `main`, tayari inaend
 - **Usiipe jina tena.** Toleo katika `_omniroute_migrations` halingelingana tena na faili, kwa hivyo kila hifadhidata ambayo tayari imeitumia ingeiendesha tena. SQL isiyo na uwezo kisha inarudia data au inasimamisha kuwasha.
 - **Je, unahitaji schema tofauti?** Unda uhamiaji mpya ukitumia `npm run db:new-migration`.
 
-Kubadilisha jina ni salama tu kwa faili ambayo haijaunganishwa, ambayo ni kesi ambayo vidokezo vya lango hurejelea. Lebo ya toleo haibadilishi chochote hapa: kila kisukuku kwenye tawi la `release/v*` huchapisha picha ya Docker `:next` na huendeshwa kwenye homolog, usakinishaji wa VPS na usawazishaji wa Enterprise, kwa hivyo uhamishaji uliounganishwa umeendeshwa kwenye hifadhidata halisi kabla ya lebo yoyote `vX.Y.Z` kuwepo. Lango linashindwa kila kuondolewa kwa faili ya msingi, iliyowekwa alama au la.
+Kubadilisha jina ni salama tu kwa faili ambayo haijaunganishwa, ambayo ndivyo vidokezo vya lango hurejelea. Lebo ya toleo haibadilishi chochote hapa: kila kisukuku kwenye tawi la `release/v*` huchapisha picha ya Docker `:next` na huendeshwa kwenye homolog, usakinishaji wa VPS na usawazishaji wa Enterprise, kwa hivyo uhamishaji uliounganishwa umeendeshwa kwenye hifadhidata halisi kabla ya lebo yoyote `vX.Y.Z` kuwepo. Lango linashindwa kila kuondolewa kwa faili ya msingi, iliyowekwa alama au la.
 
 - **Inarejesha uhamiaji uliounganishwa.** `git revert` inayofuta faili inashindwa lango. Weka faili na utendue schema yake katika uhamiaji mpya: `npm run db:new-migration -- <description>`, na `DROP TABLE IF EXISTS`, `DROP INDEX IF EXISTS` na kadhalika. Hifadhidata zilizoboreshwa na mpya kisha malizike na schema ile ile.
 - **Ile inayokubalika ibadilishe jina: ingizo la uoanifu na maudhui yanayofanana.** Ikiwa faili iliyounganishwa lazima isogezwe (kwa mfano, faili mbili zilizounganishwa hushiriki muhuri wa muda na kiendeshaji kitaacha kwa mgongano wa toleo), ipe jina jipya la baadaye bila kugusa SQL yake na uongeze `{ fromVersion, fromName, toVersion, toName }` kwa `RENAMED_MIGRATION_COMPATIBILITY` katika `src/lib/db/migrationRunner/constants.ts`. Hifadhidata zilizotumia toleo la zamani husogeza safu mlalo `_omniroute_migrations` badala ya kuendesha faili tena. Lango linaonya juu ya kubadilisha jina kama hilo na kila wakati huendesha ukaguzi juu yake, bila kujali muhuri mpya wa wakati: usakinishaji mpya hutumia faili katika nafasi yake mpya, hifadhidata iliyoboreshwa haifanyi hivyo, kwa hivyo chagua muhuri mpya wa saa karibu na ile ya zamani. Lango limeshindwa kubadili jina ikiwa yaliyomo yamebadilika (mabadiliko ya schema bado huenda katika uhamiaji mpya), au ikiwa faili inayolengwa ya kiingilio haiko kwenye diski.
@@ -246,7 +246,7 @@ Ukaguzi wa mabadiliko (`scripts/check/migration-commutation.ts`) huunda hifadhid
 
 Ili kutekeleza ulinganisho sawa ndani ya nchi, pitisha msingi kwa uwazi, kwa mfano `npm run check:migration-numbering -- --base origin/<base-branch>`, au `npm run check:migration-numbering -- --base-latest-tag` ili kulinganisha na toleo jipya zaidi.
 
-### Converting an Open PR's `NNN` Migration
+### Inabadilisha Uhamiaji wa Open PR's `NNN`
 
 Ombi la kuvuta lililofunguliwa kabla ya swichi bado inaweza kubeba faili mfuatano kama vile `242_add_widgets.sql`. Nambari za zamani juu ya `241` zimekataliwa, kwa hivyo zibadilishe kabla ya kuunganishwa:
 
@@ -255,7 +255,7 @@ Ombi la kuvuta lililofunguliwa kabla ya swichi bado inaweza kubeba faili mfuatan
 3. **Weka SQL kutokuwa na uwezo** (`CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `INSERT OR IGNORE`), kwa sababu uhamiaji uliogeuzwa unaweza kukutana na hifadhidata ambapo schema yake tayari ipo.
 4. **Sogeza vipochi maalum vilivyo na ufunguo wa toleo.** Ikiwa PR iliongeza kipochi kwa nambari yake ya zamani katika `isSchemaAlreadyApplied()` (`src/lib/db/migrationRunner.ts`) au katika `OPTIONAL_FTS5_MIGRATION_VERSIONS` (`src/lib/db/migrationRunner/constants.ts`), badilisha kitufe hadi muhuri mpya wa saa.
 
-`tests/unit/db/codex-fence-migration-rename.test.ts` ni mfano wa kufanya kazi wa jaribio la uhamiaji uliopewa jina jipya.
+`tests/unit/db/codex-fence-migration-rename.test.ts` ni mfano wa kufanya kazi wa jaribio la uhamaji uliopewa jina jipya.
 
 ### Backports kwa Matawi Kabla ya Kubadili
 
@@ -268,7 +268,7 @@ Wakati wa kuanza, `migrationRunner.ts`:
 1. Inaunda jedwali `_omniroute_migrations` ikiwa haipo
 2. Hoja za uhamishaji ambao tayari umetumika
 3. Hutumia uhamishaji wowote mpya kwa mpangilio, kila moja katika muamala
-4. Hurekodi kila uhamishaji uliotumika kwa muhuri wa muda
+4. Hurekodi kila uhamaji uliotumika kwa muhuri wa muda
 
 ```ts
 // src/lib/db/migrationRunner.ts (simplified)
@@ -307,7 +307,7 @@ Tumia vifungu vya `IF NOT EXISTS`, `IF EXISTS`, na `OR IGNORE` / `OR REPLACE` kw
 1. **Unda faili na jenereta** : `npm run db:new-migration -- <description>` (kwa mfano `npm run db:new-migration -- add combo priority`). Huandika `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` na saa ya sasa UTC na kichwa cha maoni, kusonga mbele kwa sekunde moja ikiwa muhuri huo wa muda umechukuliwa, na kamwe haubadilishi faili. Usichague nambari kwa mkono.
 2. **Tumia DDL salama** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Jaza data kwa uangalifu** : tumia `UPDATE ... WHERE ...` kushughulikia safu mlalo zilizopo
-4. **Angalia utaratibu na jina** : `npm run test:migrations:fresh` (uhamiaji wote kwenye hifadhidata tupu) na `npm run check:migration-numbering`
+4. **Angalia utaratibu na jina** : `npm run test:migrations:fresh` (uhamiaji wote kwenye hifadhidata tupu) na `npm run check:migration-numbering`. Ndoano ya awali ya husky huendesha `check:migration-numbering` yenyewe wakati ahadi inaweka faili chini ya `src/lib/db/migrations/`, kwa hivyo jina lililochaguliwa kwa mkono au lililoundwa vibaya (kwa mfano `242_x.sql`) hushindwa kujitolea kwa karibu na ujumbe sawa CI. Ndoano huangalia majina, nakala na mfululizo wa `001`-`241` waliohifadhiwa tu; kulinganisha na msingi wa PR (kuondolewa, kubadilishwa jina au nje ya mpangilio) bado kunaendelea katika CI
 5. **Jaribu kwenye nakala** : usiwahi kuendesha uhamaji ambao haujajaribiwa kwenye uzalishaji
 6. **Jedwali lililoundwa kutoka kwa msimbo linahitaji uhamishaji pia** : ikiwa moduli pia inaunda meza kwa uvivu (`CREATE TABLE IF NOT EXISTS`, iliyohifadhiwa kama njia ya kujiponya), uhamiaji lazima uunde kwa DDL sawa. Vinginevyo usakinishaji safi na usakinishaji ulioboreshwa huishia na schemas tofauti, kulingana na ikiwa njia hiyo ya msimbo ilienda. `tests/unit/db/lazy-table-migration-guard.test.ts` huchanganua `src/` na `open-sse/` na kushindwa kwenye `CREATE` mvivu bila kuhama (#20557). Mfano: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 

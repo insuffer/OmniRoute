@@ -186,7 +186,7 @@ Cikakken jerin teburori ~30+ yana cikin `src/lib/db/migrations/`.
 
 ## Hijira
 
-OmniRoute yana amfani** sigar, ƙaura masu ƙarfi** a `src/lib/db/migrations/`. Kowane ƙaura fayil SQL ɗaya ne. Tsarin suna guda biyu suna tare; sigar da aka rubuta a `_omniroute_migrations` ita ce prefix na lamba.
+OmniRoute yana amfani** sigar, ƙaura masu ƙarfi** `src/lib/db/migrations/`. Kowane ƙaura fayil SQL ɗaya ne. Tsarin suna guda biyu suna tare; sigar da aka rubuta a `_omniroute_migrations` ita ce prefix na lamba.
 
 ### Hijira Suna
 
@@ -259,7 +259,7 @@ Buƙatun ja da aka buɗe kafin sauyawa na iya har yanzu ɗaukar fayil na jeri ka
 
 ### Komawa zuwa Reshe Kafin Sauyawa
 
-Kada a taɓa ɗauka ko mayar da fayil ɗin `YYYYMMDDHHMMSS_` baya zuwa reshe wanda ya riga ya canza (misali tsohuwar reshen `release/v*` ). Mai gudu a wurin yana tsara sunayen fayil azaman rubutu, don haka fayil ɗin da aka rubuta lokaci zai gudana tsakanin `201_` da `202_` akan sabon ma'ajin bayanai, kuma tsohuwar ƙofar da ke wurin ba ta fahimtar prefixes mai lamba 14. A kan irin wannan reshe, rubuta canjin azaman fayil ɗin `NNN_` na gaba na reshe, idempotent, don haka babu-op lokacin da sigar zamani ta zo daga baya.
+Kada a taɓa ɗauka ko mayar da fayil ɗin `YYYYMMDDHHMMSS_` zuwa reshe wanda ya riga ya canza (misali wani tsohon reshen `release/v*` ). Mai gudu a wurin yana tsara sunayen fayil azaman rubutu, don haka fayil ɗin da aka rubuta lokaci zai gudana tsakanin `201_` da `202_` akan sabon ma'ajin bayanai, kuma tsohuwar ƙofar da ke wurin ba ta fahimtar prefixes mai lamba 14. A kan irin wannan reshe, rubuta canjin azaman fayil ɗin `NNN_` na gaba na reshe, idempotent, don haka babu-op lokacin da sigar zamani ta zo daga baya.
 
 ### Yadda Hijira ke Gudu
 
@@ -304,10 +304,10 @@ Yi amfani da `IF NOT EXISTS`, `IF EXISTS`, da `OR IGNORE` / `OR REPLACE` jumlar 
 
 ### Ƙara Sabuwar Hijira
 
-1. **Ƙirƙiri fayil ɗin tare da janareta** : `npm run db:new-migration -- <description>` (misali `npm run db:new-migration -- add combo priority`). Yana rubuta `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` tare da lokacin UTC na yanzu da maɓallin sharhi, yana matsar gaba ɗaya daƙiƙa ɗaya idan an ɗauki wannan tambarin lokaci, kuma baya sake rubuta fayil ɗin. Kar a ɗauki lamba da hannu.
+1. **Ƙirƙiri fayil ɗin tare da janareta** : `npm run db:new-migration -- <description>` (misali `npm run db:new-migration -- add combo priority`). Yana rubuta `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` tare da lokacin UTC na yanzu da taken sharhi, yana matsar gaba daƙiƙa ɗaya idan an ɗauki wannan tambarin lokaci, kuma baya sake rubuta fayil ɗin. Kar a ɗauki lamba da hannu.
 2. **Yi amfani da aminci DDL** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Cika bayanai a hankali** : yi amfani da `UPDATE ... WHERE ...` don sarrafa layuka da ke akwai
-4. **Duba oda da suna** : `npm run test:migrations:fresh` (duk ƙaura akan rumbun adana bayanai) da `npm run check:migration-numbering`
+4. **Duba oda da suna** : `npm run test:migrations:fresh` (duk ƙaura akan rumbun adana bayanai) da `npm run check:migration-numbering`. Husky pre-commit ƙugiya yana gudanar da `check:migration-numbering` da kansa lokacin ƙaddamar da matakan fayil a ƙarƙashin `src/lib/db/migrations/`, don haka sunan da aka zaɓa da hannu ko mara kyau (misali `242_x.sql`) ya kasa aiwatarwa a cikin gida tare da kwafin CI iri ɗaya. Ƙungiya tana bincika sunaye, kwafi da daskararrun `001`– jerin `241` kawai; kwatancen tushen PR (cire, sake suna ko ƙaura ba tare da tsari ba) har yanzu yana gudana a cikin CI
 5. **Gwaji akan kwafi** : kar a taɓa gudanar da ƙaura marasa gwaji akan samarwa
 6. **Teburin da aka ƙirƙira daga lambar yana buƙatar ƙaura kuma** : idan ma'auni kuma ya ƙirƙiri tebur a kasala (`CREATE TABLE IF NOT EXISTS`, kiyaye shi azaman hanyar warkar da kai), ƙaura dole ne ya haifar da shi da DDL iri ɗaya. In ba haka ba, shigarwa mai tsabta da ingantaccen shigarwa suna ƙare tare da tsare-tsare daban-daban, dangane da ko hanyar lambar ta gudana. `tests/unit/db/lazy-table-migration-guard.test.ts` yana duba `src/` da `open-sse/` kuma ya kasa a kan malalacin `CREATE` ba tare da hijira ba (#20557). Misali: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 

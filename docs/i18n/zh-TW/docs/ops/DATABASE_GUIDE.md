@@ -186,13 +186,13 @@ const providers = await listProviders();
 
 ## 遷移
 
-OmniRoute使用**版本化、冪等遷移**在`src/lib/db/migrations/`.每個遷移都是一個SQL檔。兩種命名格式並存； `_omniroute_migrations`中記錄的版本是數字前綴。
+OmniRoute uses** versioned, idempotent migrations**在`src/lib/db/migrations/`.每個遷移都是一個SQL檔。兩種命名格式並存； `_omniroute_migrations`中記錄的版本是數字前綴。
 
-### 遷移命名
+### Migration Naming
 
 | 格式                                                 | 例子                                 | 用於                                                                                          |
 | ---------------------------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `NNN_description.sql` （剛好 3 位數字）              | `241_seen_models.sql`                | 舊系列`001`–`241`。當時間戳格式登陸時凍結（`240`和`241`就在它之前合併）：沒有新檔案獲得序號。 |
+| `NNN_description.sql` （剛好 3 位數字）              | `241_seen_models.sql`                | 旧系列`001`–`241`。當時間戳格式登陸時凍結（`240`和`241`就在它之前合併）：沒有新檔案獲得序號。 |
 | `YYYYMMDDHHMMSS_description.sql` （14 位數字， UTC） | `20261113120000_add_usage_index.sql` | 自 2026 年 11 月 13 日起創建的每個遷移。                                                      |
 
 為什麼改變：對於連續編號，並行PRs選擇相同的下一個編號，除了一個編號外，所有編號都必須在合併之前重新編號。 UTC時間戳為每個PR提供了自己的版本。
@@ -205,19 +205,19 @@ OmniRoute使用**版本化、冪等遷移**在`src/lib/db/migrations/`.每個遷
 - 無間隙規則僅適用於舊系列：從`001`到`241`每個數字都必須存在，除了已知的間隙`026`、 `055`和`121`。刪除`241` （或任何舊檔案）會使門失敗。 `001`和`241`永遠無法加入`KNOWN_GAPS`名單。帶有時間戳的文件永遠不會產生間隙。
 - `src/lib/db/migrations/`中的每個條目都必須是具有有效小寫`.sql`名稱的常規檔案。目錄、符號連結、 `.SQL`或`.sql.bak`檔案、隱藏檔案或帶有空格的名稱都無法通過該門，因為執行程式會默默地跳過它或在啟動時崩潰。
 
-**申請訂單。**運行程式按前綴的數值排序，而不是按文字排序：首先是舊的`001`–`241`文件，然後是按時間戳順序的帶時間戳的文件，然後是使用`OMNIROUTE_EXTRA_MIGRATIONS_DIRS`註冊的任何命名空間目錄（例如`ee-001`等版本）。掛起的遷移是其版本不在`_omniroute_migrations`中的任何文件，因此從舊分支遷移到新分支之後合併的遷移仍然適用於現有資料庫。
+**Apply order.**運行程式按前綴的數值排序，而不是按文字排序：首先是舊的`001`–`241`文件，然後是按時間戳順序的帶時間戳的文件，然後是使用`OMNIROUTE_EXTRA_MIGRATIONS_DIRS`註冊的任何命名空間目錄（例如`ee-001`等版本）。掛起的遷移是其版本不在`_omniroute_migrations`中的任何文件，因此從舊分支遷移到新分支之後合併的遷移仍然適用於現有資料庫。
 
 **時間戳記是建立順序，而不是合併順序。**如果您的遷移依賴由遷移建立的表或列**較新的**時間戳（例如，來自首先合併的另一個PR資料庫），新的資料庫將首先執行您的資料庫並失敗。當您的PR仍然打開時，使用`npm run db:new-migration`重新產生檔案名，以便它獲得更新的時間戳，或使其獨立。 `npm run test:migrations:fresh`將每個遷移應用到一個空資料庫並捕獲它。
 
 ### 合併的遷移永遠不會被刪除或重新命名
 
-一旦遷移檔案位於發布分支或`main`上，它就已經在同源資料庫和開發人員資料庫、 VPS安裝和企業同步中運作。從此：
+一旦遷移檔案位於發布分支或`main`上，它就已經在同源資料庫和開發人員資料庫、 VPS安裝和企業同步中運作。从此：
 
-- **切勿刪除它。**全新安裝將遺失其架構，而升級的資料庫則保留其架構。
+- **Never delete it.**全新安裝將遺失其架構，而升級的資料庫則保留其架構。
 - **永遠不要重命名它。** `_omniroute_migrations`中的版本將不再與檔案匹配，因此每個已應用該版本的資料庫都將再次運行它。然後，非冪等SQL會複製資料或停止啟動。
 - **需要不同的架構嗎？**使用`npm run db:new-migration`建立新的遷移。
 
-重新命名僅對於尚未合併的檔案是安全的，這就是門的提示所指的情況。發布標籤在這裡不會改變任何內容：每次推送到`release/v*`分支都會發布Docker `:next`映像並在同源、 VPS安裝和企業同步上運行，因此在任何`vX.Y.Z`標籤存在之前，合併遷移已在真實資料庫上運行。每次刪除基本文件（無論是否已標記）都會失敗。
+重命名仅对于尚未合并的文件是安全的，这就是门的提示所指的情况。發布標籤在這裡不會改變任何內容：每次推送到`release/v*`分支都會發布Docker `:next`映像並在同源、 VPS安裝和企業同步上運行，因此在任何`vX.Y.Z`標籤存在之前，合併遷移已在真實資料庫上運行。每次删除基本文件（无论是否已标记）时，该门都会失败。
 
 - **恢復合併的遷移。**刪除檔案的`git revert`會失敗。保留檔案並在新遷移中撤銷其架構： `npm run db:new-migration -- <description>`、 `DROP TABLE IF EXISTS`、 `DROP INDEX IF EXISTS`等。升級後的新資料庫將以相同的架構結束。
 - **接受的重命名是：相容性條目和相同的內容。**如果合併的檔案必須移動（例如，兩個合併的檔案共用時間戳記並且執行程式因版本衝突而停止），請重新命名後一個檔案而不觸及其SQL並將`{ fromVersion, fromName, toVersion, toName }`新增至`src/lib/db/migrationRunner/constants.ts`中的`RENAMED_MIGRATION_COMPATIBILITY` 。應用舊版的資料庫會移動其`_omniroute_migrations`行，而不是再次執行該檔案。無論新的時間戳記是什麼，門都會對此類重命名發出警告，並始終對其運行交換檢查：全新安裝將文件應用到新位置，升級的數據庫則不會，因此請選擇靠近舊時間戳的新時間戳。如果內容發生變更（新遷移中仍會發生架構變更），或者條目的目標檔案不在磁碟上，則門將導致重新命名失敗。
@@ -240,7 +240,7 @@ OmniRoute使用**版本化、冪等遷移**在`src/lib/db/migrations/`.每個遷
 | 舊格式`NNN_`檔案新增了一個數字，位於基地最新的舊格式檔案下方                | **失敗**，即使`KNOWN_GAPS`在同一個拉取請求中進行編輯：舊系列已凍結，請使用`npm run db:new-migration`建立遷移。接受高於基地最新文件（ `release/v*`到`main`拉取請求）的舊格式檔案。                                                |
 | 無序、編輯或重新命名的檔案包含`INSERT`、 `UPDATE`、 `DELETE`或`REPLACE`語句 | **警告**：交換檢查不會比較數據，因此請檢查升級後的資料庫和新資料庫應用它的順序是否會更改結果。                                                                                                                                   |
 
-一次交換檢查會將無序、已編輯和重新命名的檔案一起覆寫。
+一次交換檢查將無序的檔案、已編輯的檔案和重新命名的檔案一起覆寫。
 
 交換檢查（`scripts/check/migration-commutation.ts`）使用實際安裝路徑建立兩個臨時資料庫：一個**升級版**一個（使用基本遷移啟動，然後使用拉取請求的遷移在同一文件上再次啟動）和一個**新鮮的**一個（透過拉取請求的遷移啟動一次）。它比較結果模式：表和列（忽略列順序）、 UNIQUE / PRIMARY KEY和FOREIGN KEY約束、每個表的規範化`CREATE TABLE`文字（涵蓋CHECK約束、排序規則、產生的列和表選項）、索引、觸發器和視圖。不比較行數據。如果它們匹配，門就會列印出文件無序，但會通勤並通過。如果它們不同，則門會失敗，並顯示差異和情況提示：對於無序文件，使用`npm run db:new-migration`重新生成其名稱，這是安全的，因為文件尚未合併；對於已編輯的基礎文件，恢復基礎內容並將更改放入新的遷移中；對於重命名的文件，撤消重命名或在其通勤處選擇另一個新時間戳，切勿使用其他名稱的相同時間戳。如果檢查本身無法運行，則CI中的門會失敗，並且僅在本地發出警告。對於已編輯的基本文件，升級的資料庫是使用該文件的基本內容構建的，並且第二次引導會跳過它，因為它的版本已被記錄。對於重命名的文件，升級後的資料庫是使用舊名稱下的文件構建的，第二次啟動時將其`_omniroute_migrations`行移動到相容性條目，而不是再次運行；門通過`--must-not-apply`傳遞新名稱，因此如果第二次啟動應用它，檢查將失敗。如果拉取請求遷移無法套用於升級的路徑，即在每次基礎遷移之後（無論是否在全新安裝時也失敗），gate 會報告`migration do PR não aplica`並要求您針對基礎的當前架構修復SQL ；如果檔案依賴具有較晚時間戳的另一個拉取請求遷移，請使用`npm run db:new-migration`重新產生其名稱。
 
@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS proxy_registry (
 1. **使用生成器建立文件**: `npm run db:new-migration -- <description>` （例如`npm run db:new-migration -- add combo priority`）。它使用當前UTC時間和註解標頭寫入`src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` ，如果採用該時間戳記則向前移動一秒，並且永遠不會覆蓋檔案。不要手動選擇號碼。
 2. **使用安全DDL** ： `CREATE TABLE IF NOT EXISTS`、 `CREATE INDEX IF NOT EXISTS`、 `ALTER TABLE ... ADD COLUMN`
 3. **仔細回填數據**：使用`UPDATE ... WHERE ...`處理現有行
-4. **檢查順序和命名**： `npm run test:migrations:fresh` （空資料庫上的所有遷移）和`npm run check:migration-numbering`
+4. **檢查順序和命名**： `npm run test:migrations:fresh` （空資料庫上的所有遷移）和`npm run check:migration-numbering`。當提交在`src/lib/db/migrations/`下暫存檔案時，husky 預先提交掛鉤會自行執行`check:migration-numbering` ，因此手動選擇或格式錯誤的名稱（例如`242_x.sql`）會導致本地提交失敗，並列印相同的訊息CI 。該鉤子僅檢查名稱、重複項和凍結的`001`–`241`系列；與PR基礎的比較（已刪除、重新命名或無序遷移）仍在CI中運行
 5. **在副本上測試**：永遠不要在生產環境中執行未經測試的遷移
 6. **從程式碼建立的表也需要遷移**：如果模組也延遲建立表（`CREATE TABLE IF NOT EXISTS`，保留為自我修復路徑），則遷移必須使用相同的DDL來建立它。否則，全新安裝和升級安裝最終會產生不同的架構，這取決於該程式碼路徑是否運作。 `tests/unit/db/lazy-table-migration-guard.test.ts`掃描`src/`和`open-sse/`並在沒有遷移的惰性`CREATE`上失敗 (#20557)。範例： `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`。
 

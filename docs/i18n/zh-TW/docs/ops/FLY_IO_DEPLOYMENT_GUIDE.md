@@ -1,4 +1,9 @@
+# OmniRoute Fly.io Deployment Guide (中文 (繁體))
+
+🌐 **Languages:** 🇺🇸 [English](../../../../ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇪🇹 [am](../../../am/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇸🇦 [ar](../../../ar/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇦🇿 [az](../../../az/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇧🇬 [bg](../../../bg/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇧🇩 [bn](../../../bn/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇧🇦 [bs](../../../bs/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇨🇿 [cs](../../../cs/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇩🇰 [da](../../../da/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇩🇪 [de](../../../de/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇬🇷 [el](../../../el/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇪🇸 [es](../../../es/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇪🇪 [et](../../../et/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇷 [fa](../../../fa/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇫🇮 [fi](../../../fi/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇫🇷 [fr](../../../fr/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇪 [ga](../../../ga/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [gu](../../../gu/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇳🇬 [ha](../../../ha/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇱 [he](../../../he/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [hi](../../../hi/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇭🇷 [hr](../../../hr/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇭🇺 [hu](../../../hu/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇦🇲 [hy](../../../hy/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇩 [id](../../../id/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇳🇬 [ig](../../../ig/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇹 [it](../../../it/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇯🇵 [ja](../../../ja/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇬🇪 [ka](../../../ka/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇰🇭 [km](../../../km/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [kn](../../../kn/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇰🇷 [ko](../../../ko/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇱🇹 [lt](../../../lt/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇱🇻 [lv](../../../lv/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [ml](../../../ml/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [mr](../../../mr/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇲🇾 [ms](../../../ms/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇲🇹 [mt](../../../mt/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇲🇲 [my](../../../my/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇳🇵 [ne](../../../ne/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇳🇱 [nl](../../../nl/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇳🇴 [no](../../../no/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [or](../../../or/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [pa](../../../pa/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇵🇭 [phi](../../../phi/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇵🇱 [pl](../../../pl/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇵🇹 [pt](../../../pt/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇷🇴 [ro](../../../ro/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇷🇺 [ru](../../../ru/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇱🇰 [si](../../../si/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇸🇰 [sk](../../../sk/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇸🇮 [sl](../../../sl/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇷🇸 [sr](../../../sr/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇸🇪 [sv](../../../sv/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇰🇪 [sw](../../../sw/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [ta](../../../ta/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇮🇳 [te](../../../te/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇹🇭 [th](../../../th/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇹🇷 [tr](../../../tr/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇵🇰 [ur](../../../ur/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇺🇿 [uz](../../../uz/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇻🇳 [vi](../../../vi/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇳🇬 [yo](../../../yo/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/ops/FLY_IO_DEPLOYMENT_GUIDE.md)
+
 ---
+
 title: "OmniRoute Fly.io 部署指南（繁體中文）"
 version: 3.8.40
 lastUpdated: 2026-06-28
@@ -134,32 +139,32 @@ flyctl deploy
 
 ---
 
-## 5. 必要參數
+## 5. 所需參數
 
-本專案建議至少在 Fly.io 上配置以下參數。
+本專案建議在Fly.io上至少配置以下參數。
 
-### 5.1 已驗證的參數
+### 5.1 驗證參數
 
-以下參數已在目前 `omniroute` 應用程式的實際部署中使用：
+這些參數已在目前`omniroute`應用程式的實際部署中使用：
 
 - `API_KEY_SECRET`
 - `DATA_DIR`
 - `JWT_SECRET`
 - `MACHINE_ID_SALT`
 - `NEXT_PUBLIC_BASE_URL`
-- `OMNIROUTE_WS_BRIDGE_SECRET`（生產環境必填 — 用於 WebSocket 橋接認證）
+- `OMNIROUTE_WS_BRIDGE_SECRET` （生產中需要—用於WebSocket橋接驗證）
 - `STORAGE_ENCRYPTION_KEY`
 
-### 5.2 關於 `INITIAL_PASSWORD`
+### 5.2 關於`INITIAL_PASSWORD`
 
-目前專案未設定 `INITIAL_PASSWORD`，因為此部署不需要。
+目前專案沒有設定`INITIAL_PASSWORD`因為本次部署不需要。
 
-如果未設定：
+如果沒有設定：
 
-- 啟動日誌會顯示預設密碼為 `CHANGEME`
-- 您應在部署後盡快在系統設定中變更登入密碼
+- 您可以在首次存取時在入門精靈中建立儀表板密碼。完成密碼步驟：跳過該步驟將關閉儀表板登錄，從而使儀表板向任何可以訪問應用程式URL人開放
+- Fly 的代理程式從非環回地址到達應用程序，因此在您提交密碼後，嚮導會要求提供一次性引導令牌，應用程式此時會將其列印到其日誌中： `flyctl logs --no-tail -a omniroute | Select-String BOOTSTRAP`。如果該行已滾出日誌，請重新啟動應用程式並再次提交精靈以列印新令牌
 
-如果您想在無人值守的情況下初始化後端密碼，可以之後再新增：
+若要在無人值守的情況下設定密碼，請在第一次存取儀表板之前新增它（儲存密碼後， `INITIAL_PASSWORD`將被忽略）：
 
 - `INITIAL_PASSWORD`
 
@@ -265,58 +270,58 @@ flyctl secrets set INITIAL_PASSWORD=your-strong-password -a omniroute
 
 ---
 
-## 8. 檢視目前參數
+## 8. 查看目前參數
 
 ```powershell
 flyctl secrets list -a omniroute
 ```
 
-如果控制台中的「Secrets」頁面未顯示預期的變數，請檢查：
+如果控制台中的`Secrets`頁面沒有顯示預期的變量，請檢查：
 
-- 您正在檢視的是 `omniroute` 應用程式
-- `fly.toml` 中的 `app` 值與控制台中的應用程式相符
+- 您正在查看`omniroute`應用程式
+- `fly.toml`中的`app`值與控制台中的應用程式匹配
 
 ---
 
-## 9. 後續更新與發布
+## 9. 後續更新和發布
 
-程式碼更新後，發布流程很簡單：
+程式碼更新後，發布過程很簡單：
 
 ```powershell
 git pull
 flyctl deploy
 ```
 
-如果您只需要更新參數而不變更程式碼：
+如果只需要更新參數而不改變程式碼：
 
 ```powershell
 flyctl secrets set KEY=value -a omniroute
 ```
 
-Fly 會自動執行機器的滾動更新。
+Fly 將自動執行機器的滾動更新。
 
-### 9.1 追蹤上游儲存庫更新同時保留 Fork 的 `fly.toml`
+### 9.1 追蹤上游儲存庫更新，同時保留 Fork 的`fly.toml`
 
-如果目前儲存庫是 fork，且您想同步上游 `https://github.com/diegosouzapw/OmniRoute` 的更新，請遵循以下工作流程。
+如果目前儲存庫是分支，並且您想要從上游`https://github.com/cheaper-inference/OmniRoute`同步更新，請依照下列工作流程操作。
 
-首先，確認您的遠端倉庫：
+首先，驗證您的遙控器：
 
 ```powershell
 git remote -v
 ```
 
-您應該會看到：
+您至少應該看到：
 
-- `origin` 指向您自己的 fork
-- `upstream` 指向原始儲存庫
+- `origin`指向你自己的fork
+- `upstream`指向原始儲存庫
 
-如果未配置 `upstream`，請新增：
+如果沒有配置`upstream` ，則新增：
 
 ```powershell
-git remote add upstream https://github.com/diegosouzapw/OmniRoute.git
+git remote add upstream https://github.com/cheaper-inference/OmniRoute.git
 ```
 
-在與上游同步之前，請先擷取最新的提交和標籤：
+在與上游同步之前，請取得最新的提交和標籤：
 
 ```powershell
 git fetch upstream --tags
@@ -329,9 +334,9 @@ git describe --tags --always
 git show --no-patch --oneline v3.4.7
 ```
 
-> 注意：目前專案版本為 `v3.8.0`。以下 `v3.4.7` 的引用僅作為歷史範例保留。實際發布時，請使用 `:latest` 或目前版本標籤（例如 `:v3.8.0`）。
+> 注意：目前專案版本是`v3.8.0`。下面的`v3.4.7`參考文獻僅作為歷史範例保留。對於實際版本，請使用`:latest`或目前版本標籤（例如`:v3.8.0`）。
 
-如果您想合併最新的上游 `main`，同時強制保留您 fork 的 `fly.toml`，請遵循以下工作流程：
+如果您想合併最新的上游`main`同時強制保留分支的`fly.toml`，請遵循以下工作流程：
 
 ```powershell
 git merge upstream/main
@@ -341,52 +346,52 @@ git commit -m "chore(deploy): keep fork fly.toml"
 git push origin main
 ```
 
-注意事項：
+筆記：
 
-- `git merge upstream/main` 會同步原始儲存庫的最新程式碼
-- `git checkout HEAD~1 -- fly.toml` 會從合併前還原您 fork 自己的 `fly.toml`
-- 如果上游未修改 `fly.toml`，此步驟不會引入任何差異
-- 如果上游修改了 `fly.toml`，此步驟可確保您的 Fly 應用程式名稱、磁碟區掛載、地區和其他 fork 特定的部署配置不會被覆寫
+- `git merge upstream/main`從原始儲存庫同步最新程式碼
+- `git checkout HEAD~1 -- fly.toml`在合併之前恢復你的 fork 自己的`fly.toml`
+- 如果上游沒有修改`fly.toml`，這一步驟不會引入任何差異
+- 如果上游確實修改了`fly.toml`，此步驟可確保您的 Fly 應用程式名稱、磁碟區安裝、區域和其他特定於分叉的部署配置不會被覆蓋
 
-如果您想對齊特定的發布標籤（例如 `v3.4.7`），請先確認該標籤已包含在 `upstream/main` 中：
+如果您想與特定版本標籤（例如`v3.4.7`）保持一致，請先驗證該標籤是否已包含在`upstream/main`中：
 
 ```powershell
 git merge-base --is-ancestor v3.4.7 upstream/main
 ```
 
-成功回傳表示 `upstream/main` 已包含該版本；您可以直接合併 `upstream/main`。
+成功返回意味著`upstream/main`已經包含該版本；您可以簡單地合併`upstream/main`。
 
-### 9.2 同步上游後的標準發布順序
+### 9.2 上行同步後的標準發布順序
 
-與原始儲存庫同步後，請遵循此建議的發布順序：
+與原始儲存庫同步後，請遵循以下建議的發布順序：
 
 1. `git fetch upstream --tags`
 2. `git merge upstream/main`
-3. 還原 fork 的 `fly.toml`
+3. 恢復fork的`fly.toml`
 4. `git push origin main`
 5. `flyctl deploy`
 6. `flyctl status -a omniroute`
 7. `flyctl logs --no-tail -a omniroute`
 
-這是升級目前專案至 `v3.4.7` 時使用的實際工作流程（範例引用的是舊版本；目前實際版本為 `v3.8.0`）。
+這是目前專案升級到`v3.4.7`時的實際流程（範例指的是歷史版本，目前實際版本為`v3.8.0`）。
 
 ---
 
 ## 10. 部署後檢查
 
-### 10.1 檢查應用程式狀態
+### 10.1 檢查申請狀態
 
 ```powershell
 flyctl status -a omniroute
 ```
 
-### 10.2 檢視啟動日誌
+### 10.2 查看啟動日誌
 
 ```powershell
 flyctl logs --no-tail -a omniroute
 ```
 
-### 10.3 驗證網站可存取性
+### 10.3 驗證站點可訪問性
 
 ```powershell
 try {
@@ -400,7 +405,7 @@ try {
 }
 ```
 
-回傳值為 `200` 表示網站正常回應。
+傳回值`200`表示站點回應正常。
 
 ---
 
@@ -424,38 +429,38 @@ try {
 
 ## 12. 常見問題
 
-### 12.1 「Secrets」頁面為空
+### 12.1 `Secrets`頁為空
 
 通常有兩個原因：
 
-- 您尚未執行 `flyctl secrets set`
-- 您正在檢視不同的應用程式（例如 `oroute` 而非 `omniroute`）
+- 您還沒有運行`flyctl secrets set`
+- 您正在查看不同的應用程式（例如`oroute`而不是`omniroute`）
 
-### 12.2 `flyctl deploy` 回報 `app not found`
+### 12.2 `flyctl deploy`報告`app not found`
 
-請先建立應用程式：
+首先創建應用程式：
 
 ```powershell
 flyctl apps create omniroute
 ```
 
-### 12.3 `fly.toml` 解析失敗
+### 12.3 `fly.toml`解析失敗
 
-請檢查以下項目：
+檢查以下內容：
 
-- 註解中是否有亂碼字元
-- TOML 的引號和縮排是否正確
+- 評論是否有亂碼
+- TOML引用和縮排是否正確
 
-### 12.4 資料未持久化
+### 12.4 數據不持久
 
-請同時驗證以下兩項：
+驗證以下兩項：
 
-- `fly.toml` 包含 `destination = '/data'`
-- `DATA_DIR` 設定為 `/data`
+- `fly.toml`包含`destination = '/data'`
+- `DATA_DIR`設定為`/data`
 
-### 12.5 沒有 `INITIAL_PASSWORD` 可以執行嗎？
+### 12.5 沒有`INITIAL_PASSWORD`可以運行嗎？
 
-可以執行。它會回退到預設密碼 `CHANGEME`。建議在生產環境中盡快變更後端密碼。
+是的。取消設定`INITIAL_PASSWORD`後，您可以在第一次造訪時在入門精靈中建立儀表板密碼（第 5.2 節介紹一次性引導令牌和密碼步驟）。
 
 ---
 
@@ -473,9 +478,9 @@ flyctl apps create omniroute
 
 ---
 
-## 14. 目前專案的極簡發布檢查清單
+## 14. 目前項目的最小發布清單
 
-後續發布最常用的命令：
+後續版本中最常用的指令是：
 
 ```powershell
 flyctl auth whoami
@@ -485,13 +490,13 @@ flyctl deploy
 flyctl logs --no-tail -a omniroute
 ```
 
-對於一般發布，核心命令很簡單：
+對於正常發布，核心命令很簡單：
 
 ```powershell
 flyctl deploy
 ```
 
-對於新環境的首次部署，核心步驟為：
+對於新環境中的首次部署，核心步驟是：
 
 1. `flyctl auth login`
 2. `flyctl apps create omniroute`

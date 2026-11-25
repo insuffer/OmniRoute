@@ -303,10 +303,10 @@ Slobodno koristite klauzule `IF NOT EXISTS`, `IF EXISTS` i `OR IGNORE` / `OR REP
 
 ### Dodavanje nove migracije
 
-1. **Kreirajte datoteku sa generatorom** : `npm run db:new-migration -- <description>` (na primjer `npm run db:new-migration -- add combo priority`). Zapisuje `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` sa trenutnim UTC vremenom i zaglavljem komentara, pomiče se za jednu sekundu naprijed ako se uzme ta vremenska oznaka i nikada ne prepisuje datoteku. Nemojte birati broj ručno.
+1. **Kreirajte datoteku sa generatorom** : `npm run db:new-migration -- <description>` (na primjer `npm run db:new-migration -- add combo priority`). Zapisuje `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` sa trenutnim UTC vremenom i zaglavljem komentara, pomiče se za jednu sekundu unaprijed ako se uzme ta vremenska oznaka i nikada ne prepisuje datoteku. Nemojte birati broj ručno.
 2. **Koristite sigurnu DDL** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Pažljivo popunite podatke** : koristite `UPDATE ... WHERE ...` za rukovanje postojećim redovima
-4. **Provjerite redoslijed i imenovanje** : `npm run test:migrations:fresh` (sve migracije na praznu bazu podataka) i `npm run check:migration-numbering`
+4. **Provjerite redoslijed i imenovanje** : `npm run test:migrations:fresh` (sve migracije na praznu bazu podataka) i `npm run check:migration-numbering`. Husky pre-urezivanje kuka pokreće `check:migration-numbering` samostalno kada urezivanje postavlja datoteku pod `src/lib/db/migrations/`, tako da ručno odabrano ili loše oblikovano ime (na primjer `242_x.sql`) ne uspijeva urezivanje lokalno sa istom porukom CI ispisuje. Hook provjerava samo imena, duplikate i zamrznute serije `001`–`241` ; poređenje sa PR bazom (uklonjene, preimenovane ili migracije van reda) još uvijek radi u CI
 5. **Testirajte na kopiji** : nikada ne izvodite neprovjerene migracije u proizvodnji
 6. **Tabela kreirana iz koda također treba migraciju** : ako modul također kreira tabelu lijeno (`CREATE TABLE IF NOT EXISTS`, čuva se kao staza samoizlječenja), migracija je mora kreirati sa istim DDL. U suprotnom čista instalacija i nadograđena instalacija završavaju s različitim shemama, ovisno o tome da li je ta kodna putanja pokrenuta. `tests/unit/db/lazy-table-migration-guard.test.ts` skenira `src/` i `open-sse/` i ne uspijeva na lijenom `CREATE` bez migracije (#20557). Primjer: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
